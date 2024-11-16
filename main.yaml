@@ -9,7 +9,12 @@
       update_cache: yes
       name: zsh
       state: present
-    ansible.builtin.shell: chsh -s $(which zsh)
+    
+  - name: Set zsh as the default shell
+  ansible.builtin.user:
+    name: "{{ zsh_user }}"
+    shell: "{{ zsh_executable }}"
+  become: true
 
   - name: Install curl
     become: true
