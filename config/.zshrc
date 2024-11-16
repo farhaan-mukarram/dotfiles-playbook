@@ -17,7 +17,8 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
 
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/.tmux/plugins/tmuxifier/bin
+# export PATH=$PATH:$HOME/.tmux/plugins/tmuxifier/bin
+export PATH="$HOME/.tmuxifier/bin:$PATH"
 
 # tmux plugin
 eval "$(tmuxifier init -)"
