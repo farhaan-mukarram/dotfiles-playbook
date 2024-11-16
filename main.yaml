@@ -41,7 +41,7 @@
     ansible.builtin.shell: fc-cache -f -v
 
   - name: Install Kitty Terminal
-    ansible.builtin.shell: curl -sL https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin | launch=n
+    ansible.builtin.shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n
 
   - name: Setup Kitty Desktop Links
     ansible.builtin.script: ./config/kitty-desktop.sh
