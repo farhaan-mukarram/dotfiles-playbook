@@ -1,0 +1,23 @@
+---
+- name: Setup dev environment
+  hosts: localhost
+
+  tasks:
+  - name: Install zsh
+    become: true
+    ansible.builtin.apt:
+      update_cache: yes
+      name: zsh
+      state: present
+
+  - name: Install curl
+    become: true
+    ansible.builtin.apt:
+      update_cache: yes
+      name: curl
+      state: present
+
+  - name: Configure zsh to be default shell
+    become: true
+    ansible.builtin.command: chsh -s $(which zsh)
+...
