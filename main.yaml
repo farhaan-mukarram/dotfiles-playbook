@@ -17,42 +17,31 @@
       name: curl
       state: present
 
-  - name: Configure zsh to be default shell
-    become: true
-    ansible.builtin.command: chsh -s $(which zsh)
-
   - name: Install oh-my-zsh
-    become: true
-    ansible.builtin.command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    ansible.builtin.shell: echo "Y\n" | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
   - name: Install antigen
-    become: true
-    ansible.builtin.command: curl -L git.io/antigen > antigen.zsh
+    ansible.builtin.shell: curl -L git.io/antigen > antigen.zsh
 
   - name: Install oh-my-posh
-    become: true
-    ansible.builtin.command: curl -s https://ohmyposh.dev/install.sh | bash -s
+    ansible.builtin.shell: curl -s https://ohmyposh.dev/install.sh | bash -s
 
   - name: Create fonts directory if it doesn't exist
-    become: true
     ansible.builtin.file:
       path: $HOME/.fonts
       state: directory
 
   - name: Download JetBrains Mono Nerd Font
-    become: true
     ansible.builtin.unarchive:
       src: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
       dest: $HOME/.fonts
       remote_src: yes
 
   - name: Install JetBrains Mono Nerd Font
-    become: true
-    ansible.builtin.command: fc-cache -f -v
+    ansible.builtin.shell: fc-cache -f -v
 
   - name: Install Kitty Terminal
-    become: true
-    ansible.builtin.command: curl -L -s https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin | launch=n
+    ansible.builtin.shell: curl -L -s https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin | launch=n
 
   - name: Setup Kitty Desktop Links
     become: true
@@ -66,12 +55,10 @@
       state: present
 
   - name: Install tmux plugin manager
-    become: true
-    ansible.builtin.command: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm -q
+    ansible.builtin.shell: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm -q
 
   - name: Install tmuxifier
-    become: true
-    ansible.builtin.command: git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier
+    ansible.builtin.shell: git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier
 
   - name: Copy kitty config
     ansible.builtin.copy:
