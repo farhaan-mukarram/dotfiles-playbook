@@ -62,7 +62,7 @@
   - name: Copy kitty config
     ansible.builtin.copy:
       src: ./config/kitty.conf
-      dest: $HOME/.config/kitty/kitty.conf
+      dest: $HOME/.config/kitty/
 
   - name: Copy zsh config
     ansible.builtin.copy:
