@@ -21,7 +21,7 @@
     ansible.builtin.shell: echo "Y\n" | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
   - name: Install antigen
-    ansible.builtin.shell: curl -sL git.io/antigen > antigen.zsh
+    ansible.builtin.shell: curl -sL git.io/antigen > ~/antigen.zsh
 
   - name: Install oh-my-posh
     ansible.builtin.shell: curl -s https://ohmyposh.dev/install.sh | bash -s
@@ -73,4 +73,7 @@
     ansible.builtin.copy:
       src: ./config/oh-my-posh-config.omp.json
       dest: $HOME/oh-my-posh-config-omp.json
+
+  - name: Reload shell config
+    ansible.builtin.shell: exec zsh
 ...
