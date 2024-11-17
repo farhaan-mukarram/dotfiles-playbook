@@ -86,8 +86,8 @@
     ansible.builtin.shell: exec zsh
 
   - name: Install neovim pre-reqs
+    become: true
     ansible.builtin.apt:
-      become: true
       name:
         - ninja-build
         - gettext
