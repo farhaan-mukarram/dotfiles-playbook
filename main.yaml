@@ -84,4 +84,24 @@
 
   - name: Reload shell config
     ansible.builtin.shell: exec zsh
+
+  - name: Install neovim pre-reqs
+    ansible.builtin.apt:
+      become: true
+      name:
+        - ninja-build
+        - gettext
+        - cmake
+        - unzip
+        - curl
+        - build-essential
+
+  - name: Build neovim from source
+    ansible.bultin.script: ./config/build-neovim.sh
+
+  - name: Install neovim
+    ansible.builtin.script: ./config/install-neovim.sh
+
+  - name: Remove neovim setup files
+    ansible.builtin.shell: rm -rf ~/neovim
 ...
