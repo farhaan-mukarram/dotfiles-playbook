@@ -95,6 +95,15 @@
         - unzip
         - curl
         - build-essential
+        - ripgrep
+        - fd-find
+
+  - name: Update symlinks for fd-find
+    ansible.builtin.shell: ln -s $(which fdfind) ~/.local/bin/fd
+
+  - name: Install lazygit
+    become: true
+    ansible.builtin.shell: sh ./config/install-lazygit.sh
 
   - name: Download latest neovim release
     ansible.builtin.unarchive:
