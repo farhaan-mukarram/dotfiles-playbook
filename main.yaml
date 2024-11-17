@@ -113,4 +113,10 @@
 
   - name: Rename extracted folder
     ansible.builtin.shelk: mv ~/nvim-linux64 ~/neovim
+
+
+  - name: Copy nvim config
+    ansible.builtin.copy:
+      src: ./config/nvim
+      dest: ~/.config/
 ...
