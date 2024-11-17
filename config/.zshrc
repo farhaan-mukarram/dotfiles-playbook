@@ -29,7 +29,7 @@ export PATH="$HOME/neovim/bin:$PATH"
 eval "$(tmuxifier init -)"
 
 # initialise oh-my-posh
-eval "$(oh-my-posh init zsh --config ~/oh-my-posh-config-omp.json)"
+eval "$(oh-my-posh init zsh --config ~/oh-my-posh-config.omp.json)"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 
