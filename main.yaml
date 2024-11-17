@@ -96,12 +96,12 @@
         - curl
         - build-essential
 
-  - name: Build neovim from source
-    ansible.builtin.shell: sh ./config/build-neovim.sh
+  - name: Download latest neovim release
+    ansible.builtin.unarchive:
+      src: "https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
+      dest: ~/
+      remote_src: yes
 
-  - name: Install neovim
-    ansible.builtin.shell: sh ./config/install-neovim.sh
-
-  - name: Remove neovim setup files
-    ansible.builtin.shell: rm -rf ~/neovim
+  - name: Rename extracted folder
+    ansible.builtin.shelk: mv ~/nvim-linux64 ~/neovim
 ...
