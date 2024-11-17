@@ -18,11 +18,17 @@ antigen apply
 
 export PATH=$PATH:$HOME/.local/bin
 # export PATH=$PATH:$HOME/.tmux/plugins/tmuxifier/bin
+
+# tmuxifier path
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 
-# tmux plugin
+# neovim path
+export PATH="$HOME/neovim/bin:$PATH"
+
+# tmuxifier init
 eval "$(tmuxifier init -)"
 
+# initialise oh-my-posh
 eval "$(oh-my-posh init zsh --config ~/oh-my-posh-config-omp.json)"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 

@@ -97,10 +97,10 @@
         - build-essential
 
   - name: Build neovim from source
-    ansible.builtin.script: ./config/build-neovim.sh
+    ansible.builtin.shell: sh ./config/build-neovim.sh
 
   - name: Install neovim
-    ansible.builtin.script: ./config/install-neovim.sh
+    ansible.builtin.shell: sh ./config/install-neovim.sh
 
   - name: Remove neovim setup files
     ansible.builtin.shell: rm -rf ~/neovim
