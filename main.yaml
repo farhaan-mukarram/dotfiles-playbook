@@ -97,7 +97,7 @@
         - build-essential
 
   - name: Build neovim from source
-    ansible.bultin.script: ./config/build-neovim.sh
+    ansible.builtin.script: ./config/build-neovim.sh
 
   - name: Install neovim
     ansible.builtin.script: ./config/install-neovim.sh
