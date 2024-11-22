@@ -82,9 +82,6 @@
       src: ./config/oh-my-posh-config.omp.json
       dest: $HOME/oh-my-posh-config.omp.json
 
-  - name: Reload shell config
-    ansible.builtin.shell: exec zsh
-
   - name: Install neovim pre-reqs
     become: true
     ansible.builtin.apt:
