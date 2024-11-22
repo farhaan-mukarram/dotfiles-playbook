@@ -52,7 +52,7 @@
     ansible.builtin.shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n
 
   - name: Setup Kitty Desktop Links
-    ansible.builtin.script: ./config/kitty-desktop.sh
+    ansible.builtin.script: ./scripts/kitty-desktop.sh
 
   - name: Install tmux
     become: true
@@ -100,7 +100,7 @@
 
   - name: Install lazygit
     become: true
-    ansible.builtin.shell: sh ./config/install-lazygit.sh
+    ansible.builtin.shell: sh ./scripts/install-lazygit.sh
 
   - name: Download latest neovim release
     ansible.builtin.unarchive:
