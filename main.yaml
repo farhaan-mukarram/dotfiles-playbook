@@ -36,13 +36,13 @@
 
   - name: Create fonts directory if it doesn't exist
     ansible.builtin.file:
-      path: $HOME/.fonts
+      path: ~/.fonts
       state: directory
 
   - name: Download JetBrains Mono Nerd Font
     ansible.builtin.unarchive:
       src: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
-      dest: $HOME/.fonts
+      dest: ~/.fonts
       remote_src: yes
 
   - name: Install JetBrains Mono Nerd Font
@@ -70,17 +70,17 @@
   - name: Copy kitty config
     ansible.builtin.copy:
       src: ./config/kitty/
-      dest: $HOME/.config/kitty/
+      dest: ~/.config/kitty/
 
   - name: Copy zsh config
     ansible.builtin.copy:
       src: ./config/.zshrc
-      dest: $HOME/.zshrc
+      dest: ~/.zshrc
 
   - name: Copy oh-my-posh config
     ansible.builtin.copy:
       src: ./config/oh-my-posh-config.omp.json
-      dest: $HOME/oh-my-posh-config.omp.json
+      dest: ~/oh-my-posh-config.omp.json
 
   - name: Install neovim pre-reqs
     become: true
