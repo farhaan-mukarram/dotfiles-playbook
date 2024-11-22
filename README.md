@@ -12,6 +12,6 @@ ansible-playbook --ask-become-pass main.yaml
 
 ## Running the bootstrap script
 ```bash
-sh https://github.com/farhaan-mukarram/dotfiles-playbook/bootstrap.sh
+sh https://github.com/farhaan-mukarram/dotfiles-playbook/blob/main/bootstrap.sh
 ```
 
