@@ -9,3 +9,9 @@ sudo apt update && sudo apt install software-properties-common && sudo add-apt-r
 ```bash
 ansible-playbook --ask-become-pass main.yaml
 ```
+
+## Running the bootstrap script
+```bash
+sh https://github.com/farhaan-mukarram/dotfiles-playbook/bootstrap.sh
+```
+
