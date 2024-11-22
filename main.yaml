@@ -119,10 +119,10 @@
   - name: Copy gitconfig
     ansible.builtin.copy:
       src: ./config/.gitconfig
-      dest: ~/.config/
+      dest: ~/.config/.gitconfig
 
   - name: Copy tmux config
     ansible.builtin.copy:
       src: ./config/.tmux.conf
-      dest: ~/.config/
+      dest: ~/.config/.tmux.conf
 ...
