@@ -125,4 +125,10 @@
     ansible.builtin.copy:
       src: ./config/.tmux.conf
       dest: ~/.config/.tmux.conf
+
+  - name: Install nvm
+    ansible.builtin.shell: >
+      curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/refs/heads/master/install.sh" | bash
+    args:
+      creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
 ...
