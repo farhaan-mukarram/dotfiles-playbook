@@ -11,12 +11,12 @@
       state: present
 
   - name: Register current user
-    shell: whoami
+    ansible.builtin.shell: whoami
     register: current_user
 
   - name: Change default shell to zsh
     become: true
-    shell: "chsh -s $(which zsh) {{ current_user.stdout }}"
+    ansible.builtin.shell: "chsh -s $(which zsh) {{ current_user.stdout }}"
 
   - name: Install curl
     become: true
