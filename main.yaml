@@ -131,4 +131,12 @@
       curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/refs/heads/master/install.sh" | bash
     args:
       creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+
+  - name: Install Node.js (lts release) using nvm
+    ansible.builtin.shell: '. {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install --lts'
+    args:
+      creates: "{{ ansible_env.HOME }}/.nvm/versions/node"
+      chdir: "{{ ansible_env.HOME }}"
+      executable: /bin/bash
 ...
