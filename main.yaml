@@ -3,140 +3,138 @@
   hosts: localhost
 
   tasks:
-  - name: Install zsh
-    become: true
-    ansible.builtin.apt:
-      update_cache: yes
-      name: zsh
-      state: present
+    - name: Install zsh
+      become: true
+      ansible.builtin.apt:
+        update_cache: yes
+        name: zsh
+        state: present
 
-  - name: Register current user
-    ansible.builtin.shell: whoami
-    register: current_user
+    - name: Register current user
+      ansible.builtin.shell: whoami
+      register: current_user
 
-  - name: Change default shell to zsh
-    become: true
-    ansible.builtin.shell: "chsh -s $(which zsh) {{ current_user.stdout }}"
+    - name: Change default shell to zsh
+      become: true
+      ansible.builtin.shell: "chsh -s $(which zsh) {{ current_user.stdout }}"
 
-  - name: Install curl
-    become: true
-    ansible.builtin.apt:
-      update_cache: yes
-      name: curl
-      state: present
+    - name: Install curl
+      become: true
+      ansible.builtin.apt:
+        update_cache: yes
+        name: curl
+        state: present
 
-  - name: Install oh-my-zsh
-    ansible.builtin.shell: echo "n\n" | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    - name: Install oh-my-zsh
+      ansible.builtin.shell: echo "n\n" | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-  - name: Install antigen
-    ansible.builtin.shell: curl -sL git.io/antigen > ~/antigen.zsh
+    - name: Install antigen
+      ansible.builtin.shell: curl -sL git.io/antigen > ~/antigen.zsh
 
-  - name: Install oh-my-posh
-    ansible.builtin.shell: curl -s https://ohmyposh.dev/install.sh | bash -s
+    - name: Install oh-my-posh
+      ansible.builtin.shell: curl -s https://ohmyposh.dev/install.sh | bash -s
 
-  - name: Create fonts directory if it doesn't exist
-    ansible.builtin.file:
-      path: ~/.fonts
-      state: directory
+    - name: Create fonts directory if it doesn't exist
+      ansible.builtin.file:
+        path: ~/.fonts
+        state: directory
 
-  - name: Download JetBrains Mono Nerd Font
-    ansible.builtin.unarchive:
-      src: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
-      dest: ~/.fonts
-      remote_src: yes
+    - name: Download JetBrains Mono Nerd Font
+      ansible.builtin.unarchive:
+        src: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
+        dest: ~/.fonts
+        remote_src: yes
 
-  - name: Install JetBrains Mono Nerd Font
-    ansible.builtin.shell: fc-cache -f -v
+    - name: Install JetBrains Mono Nerd Font
+      ansible.builtin.shell: fc-cache -f -v
 
-  - name: Install Kitty Terminal
-    ansible.builtin.shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n
+    - name: Install Kitty Terminal
+      ansible.builtin.shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n
 
-  - name: Setup Kitty Desktop Links
-    ansible.builtin.script: ./scripts/kitty-desktop.sh
+    - name: Setup Kitty Desktop Links
+      ansible.builtin.script: ./scripts/kitty-desktop.sh
 
-  - name: Install tmux
-    become: true
-    ansible.builtin.apt:
-      update_cache: yes
-      name: tmux
-      state: present
+    - name: Install tmux
+      become: true
+      ansible.builtin.apt:
+        update_cache: yes
+        name: tmux
+        state: present
 
-  - name: Install tmux plugin manager
-    ansible.builtin.shell: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm -q
+    - name: Install tmux plugin manager
+      ansible.builtin.shell: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm -q
 
-  - name: Install tmuxifier
-    ansible.builtin.shell: git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier -q
+    - name: Install tmuxifier
+      ansible.builtin.shell: git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier -q
 
-  - name: Copy kitty config
-    ansible.builtin.copy:
-      src: ./config/kitty/
-      dest: ~/.config/kitty/
+    - name: Copy kitty config
+      ansible.builtin.copy:
+        src: ./config/kitty/
+        dest: ~/.config/kitty/
 
-  - name: Copy zsh config
-    ansible.builtin.copy:
-      src: ./config/.zshrc
-      dest: ~/.zshrc
+    - name: Copy zsh config
+      ansible.builtin.copy:
+        src: ./config/.zshrc
+        dest: ~/.zshrc
 
-  - name: Copy oh-my-posh config
-    ansible.builtin.copy:
-      src: ./config/oh-my-posh-config.omp.json
-      dest: ~/oh-my-posh-config.omp.json
+    - name: Copy oh-my-posh config
+      ansible.builtin.copy:
+        src: ./config/oh-my-posh-config.omp.json
+        dest: ~/oh-my-posh-config.omp.json
 
-  - name: Install neovim pre-reqs
-    become: true
-    ansible.builtin.apt:
-      name:
-        - ninja-build
-        - gettext
-        - cmake
-        - unzip
-        - curl
-        - build-essential
-        - ripgrep
-        - fd-find
+    - name: Install neovim pre-reqs
+      become: true
+      ansible.builtin.apt:
+        name:
+          - ninja-build
+          - gettext
+          - cmake
+          - unzip
+          - curl
+          - build-essential
+          - ripgrep
+          - fd-find
 
-  - name: Update symlinks for fd-find
-    ansible.builtin.shell: ln -s $(which fdfind) ~/.local/bin/fd
+    - name: Update symlinks for fd-find
+      ansible.builtin.shell: ln -s $(which fdfind) ~/.local/bin/fd
 
-  - name: Install lazygit
-    become: true
-    ansible.builtin.shell: sh ./scripts/install-lazygit.sh
+    - name: Install lazygit
+      become: true
+      ansible.builtin.shell: sh ./scripts/install-lazygit.sh
 
-  - name: Download latest neovim release
-    ansible.builtin.unarchive:
-      src: "https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
-      dest: ~/
-      remote_src: yes
+    - name: Download latest neovim release
+      ansible.builtin.unarchive:
+        src: "https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
+        dest: ~/
+        remote_src: yes
 
-  - name: Rename extracted folder
-    ansible.builtin.shell: mv ~/nvim-linux64 ~/neovim
+    - name: Rename extracted folder
+      ansible.builtin.shell: mv ~/nvim-linux64 ~/neovim
 
-  - name: Copy nvim config
-    ansible.builtin.copy:
-      src: ./config/nvim
-      dest: ~/.config/
+    - name: Copy nvim config
+      ansible.builtin.copy:
+        src: ./config/nvim
+        dest: ~/.config/
 
-  - name: Copy gitconfig
-    ansible.builtin.copy:
-      src: ./config/.gitconfig
-      dest: ~/.config/.gitconfig
+    - name: Copy gitconfig
+      ansible.builtin.copy:
+        src: ./config/.gitconfig
+        dest: ~/.gitconfig
 
-  - name: Copy tmux config
-    ansible.builtin.copy:
-      src: ./config/.tmux.conf
-      dest: ~/.config/.tmux.conf
+    - name: Copy tmux config
+      ansible.builtin.copy:
+        src: ./config/.tmux.conf
+        dest: ~/.tmux.conf
 
-  - name: Install nvm
-    ansible.builtin.shell: >
-      curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/refs/heads/master/install.sh" | bash
-    args:
-      creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+    - name: Install nvm
+      ansible.builtin.shell: >
+        curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/refs/heads/master/install.sh" | bash
+      args:
+        creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
 
-
-  - name: Install Node.js (lts release) using nvm
-    ansible.builtin.shell: '. {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install --lts'
-    args:
-      creates: "{{ ansible_env.HOME }}/.nvm/versions/node"
-      chdir: "{{ ansible_env.HOME }}"
-      executable: /bin/bash
-...
+    - name: Install Node.js (lts release) using nvm
+      ansible.builtin.shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install --lts"
+      args:
+        creates: "{{ ansible_env.HOME }}/.nvm/versions/node"
+        chdir: "{{ ansible_env.HOME }}"
+        executable: /bin/bash
