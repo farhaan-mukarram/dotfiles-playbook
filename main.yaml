@@ -98,6 +98,9 @@
     - name: Update symlinks for fd-find
       ansible.builtin.shell: ln -s $(which fdfind) ~/.local/bin/fd
 
+    - name: Install fzf
+      ansible.builtin.shell: git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf -q && ~/.fzf/install --all
+
     - name: Install lazygit
       become: true
       ansible.builtin.shell: sh ./scripts/install-lazygit.sh
