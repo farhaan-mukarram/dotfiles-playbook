@@ -28,9 +28,6 @@ export PATH="$HOME/neovim/bin:$PATH"
 # tmuxifier init
 eval "$(tmuxifier init -)"
 
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
 # initialise oh-my-posh
 eval "$(oh-my-posh init zsh --config ~/oh-my-posh-config.omp.json)"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
