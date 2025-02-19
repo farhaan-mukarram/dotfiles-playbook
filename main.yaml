@@ -94,6 +94,7 @@
           - build-essential
           - ripgrep
           - fd-find
+          - fzf
 
     - name: Update symlinks for fd-find
       ansible.builtin.shell: ln -s $(which fdfind) ~/.local/bin/fd
