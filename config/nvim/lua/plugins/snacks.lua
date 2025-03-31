@@ -5,5 +5,7 @@ return {
 		scroll = { enabled = false },
 		-- improve performance for large files
 		bigfile = { enabled = true },
+		-- disable snacks explorer
+		explorer = { enabled = false },
 	},
 }
