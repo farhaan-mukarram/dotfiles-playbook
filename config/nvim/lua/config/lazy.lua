@@ -26,6 +26,8 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.linting.eslint" },
 		-- Prettier
 		{ import = "lazyvim.plugins.extras.formatting.prettier" },
+		-- Black
+		{ import = "lazyvim.plugins.extras.formatting.black" },
 		-- Tailwind
 		{ import = "lazyvim.plugins.extras.lang.tailwind" },
 		-- Mini commment
