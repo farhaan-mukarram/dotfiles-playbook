@@ -36,6 +36,8 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.coding.luasnip" },
 		-- Neogen
 		{ import = "lazyvim.plugins.extras.coding.neogen" },
+		-- Plugins for Go(lang)
+		{ import = "lazyvim.plugins.extras.lang.go" },
 		-- import/override with your plugins
 		{ import = "plugins" },
 	},
