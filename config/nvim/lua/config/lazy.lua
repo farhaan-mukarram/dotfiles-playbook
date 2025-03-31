@@ -38,10 +38,14 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.coding.luasnip" },
 		-- Neogen
 		{ import = "lazyvim.plugins.extras.coding.neogen" },
-		-- Plugins for Go(lang)
+		-- Go(lang) LSP
 		{ import = "lazyvim.plugins.extras.lang.go" },
-		-- Plugins for Python
+		-- Python LSP
 		{ import = "lazyvim.plugins.extras.lang.python" },
+		-- mini hipatterns
+		{ import = "lazyvim.plugins.extras.util.mini-hipatterns" },
+		-- neo tree
+		{ import = "lazyvim.plugins.extras.editor.neo-tree" },
 		-- import/override with your plugins
 		{ import = "plugins" },
 	},
