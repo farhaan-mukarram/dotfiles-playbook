@@ -99,7 +99,8 @@
         {
           "properties": {
             "cache_duration": "none",
-            "display_mode": "files"
+            "display_mode": "files",
+            "folder_name_fallback": false
           },
           "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} \ue235 ",
           "foreground": "#111111",
