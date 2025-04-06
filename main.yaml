@@ -94,7 +94,6 @@
           - build-essential
           - ripgrep
           - fd-find
-          - python3.10-venv
 
     - name: Update symlinks for fd-find
       ansible.builtin.shell: ln -s $(which fdfind) ~/.local/bin/fd
@@ -142,3 +141,11 @@
         creates: "{{ ansible_env.HOME }}/.nvm/versions/node"
         chdir: "{{ ansible_env.HOME }}"
         executable: /bin/bash
+
+    - name: Install pip and venv for Python
+      become: true
+      ansible.builtin.apt:
+        name:
+          - python3-venv
+          - python3-pip
+
