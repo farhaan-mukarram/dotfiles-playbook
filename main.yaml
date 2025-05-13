@@ -107,12 +107,12 @@
 
     - name: Download latest neovim release
       ansible.builtin.unarchive:
-        src: "https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
+        src: "https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz"
         dest: ~/
         remote_src: yes
 
     - name: Rename extracted folder
-      ansible.builtin.shell: mv ~/nvim-linux64 ~/neovim
+      ansible.builtin.shell: mv ~/nvim-linux-x86_64 ~/neovim
 
     - name: Copy nvim config
       ansible.builtin.copy:
