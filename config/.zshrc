@@ -25,6 +25,10 @@ export PATH="$HOME/.tmuxifier/bin:$PATH"
 # neovim path
 export PATH="$HOME/neovim/bin:$PATH"
 
+# CUDA Paths
+# export PATH=${PATH}:/usr/local/cuda-12.9/bin
+# export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda-12.9/lib64
+
 # tmuxifier init
 eval "$(tmuxifier init -)"
 
