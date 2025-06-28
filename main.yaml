@@ -105,6 +105,10 @@
       become: true
       ansible.builtin.shell: sh ./scripts/install-lazygit.sh
 
+    - name: Install Ulauncher
+      become: true
+      ansible.builtin.shell: sh ./scripts/install-ulauncher.sh
+
     - name: Download latest neovim release
       ansible.builtin.unarchive:
         src: "https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz"
@@ -148,4 +152,7 @@
         name:
           - python3-venv
           - python3-pip
+
+
+
 
