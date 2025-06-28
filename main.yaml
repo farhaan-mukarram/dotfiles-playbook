@@ -153,6 +153,10 @@
           - python3-venv
           - python3-pip
 
+    - name: Install gnome extensions cli
+      become: true
+      ansible.builtin.shell: sh ./scripts/install-gnome-extensions-cli.sh
 
-
-
+    - name: Install gnome extensions
+      become: true
+      ansible.builtin.shell: sh ./scripts/install-gnome-extensions.sh
